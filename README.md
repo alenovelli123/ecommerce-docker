@@ -1,69 +1,107 @@
-# 🛍️ TP - E-commerce (Laboratorio de Aplicaciones Web Cliente)
+# Ecommerce ISTEA – Trabajo Práctico Docker
 
-Este proyecto es parte del curso **Laboratorio de Aplicaciones Web Cliente**. Se trata de una simulación de una tienda online (e-commerce) desarrollada con tecnologías del lado del cliente (frontend).
-
----
-## 🔗 Demo
-
-Puedes visitar el proyecto aquí: [Ecommerce ISTEA](https://alenovelli123.github.io/tp-ecommerce-labwebcliente/)
+Este proyecto es una aplicación web estática que simula un ecommerce, desarrollada como parte del Trabajo Práctico de Git + Docker. El objetivo fue contenerizar el sitio utilizando una imagen de Node.js con `http-server` y dejarlo listo para ejecución local mediante Docker.
 
 ---
 
-## 🚀 Funcionalidades principales
+## 🧱 Tecnologías utilizadas
 
-- Listado de productos traídos desde una API pública.
-- Visualización de cada producto en tarjetas (cards).
-- Modal con detalles del producto y opción de agregar al carrito.
-- Carrito de compras con listado de productos seleccionados.
-- Suma, resta, eliminación de productos y cálculo de totales.
-- Botones para eliminar todo o finalizar compra.
-- Buscador de productos por nombre.
-- Estado del carrito persistente usando LocalStorage.
-- Diseño responsive y accesible.
+- HTML, CSS, JavaScript (proyecto sin backend)
+- Node.js (en imagen Docker)
+- Docker
+- `http-server` para servir el sitio estático
 
 ---
 
-## 🛠️ Tecnologías utilizadas
+## 📦 Requisitos
 
-- HTML5 semántico
-- CSS3 (con [Bootstrap 5](https://getbootstrap.com/) o [Tailwind CSS](https://tailwindcss.com/))
-- JavaScript (DOM, Fetch API, LocalStorage)
-- API pública: [FakeStoreAPI](https://fakestoreapi.com/)
+- Tener Docker instalado y funcionando en tu sistema  
+  [Descargar Docker Desktop](https://www.docker.com/products/docker-desktop/)
 
 ---
 
-## 📐 Diseño y UX
+## 🚀 Pasos para ejecutar el proyecto en Docker
 
-- Responsive: adaptado a dispositivos móviles y de escritorio.
-- Tipografías de [Google Fonts](https://fonts.google.com/)
-- Buenas prácticas de botones ([Balsamiq Guide](https://balsamiq.com/learn/articles/button-design-best-practices/))
-- Accesibilidad básica con etiquetas semánticas (`<main>`, `<nav>`, etc.)
+1. **Clonar este repositorio** (o descargarlo como ZIP):
 
----
+```bash
+git clone https://github.com/alenovelli123/ecommerce-docker.git
+cd ecommerce-docker
+```
 
-## 🧪 Cómo probar el proyecto
+2. **Construir la imagen Docker:**
 
-1. Cloná este repositorio o descargalo como ZIP.
-2. Abrí `index.html` con Live Server (en VS Code).
-3. Asegurate de tener conexión a internet para consumir la API.
-4. Interactuá con los productos, el carrito, y el buscador.
+```bash
+docker build -t ecommerce-istea .
+```
 
----
+3. **Ejecutar el contenedor en modo interactivo:**
 
-## 👨‍💻 Integrantes del grupo
+```bash
+docker run -p 8080:8080 ecommerce-istea
+```
 
-- Alejandro (funciones: estructura inicial, fetch, cards, etc.)
-- [Nombre 2] – [responsabilidad]
-- [Nombre 3] – [responsabilidad]
-- [Nombre 4] – [responsabilidad]
+4. **Abrir el sitio web en el navegador:**
 
----
+```
+http://localhost:8080
+```
 
-## 📝 Notas
-
-Este proyecto no utiliza backend. Todos los datos se consumen desde la API pública y se procesan del lado del cliente.
+🔁 **Nota:** esta ventana debe permanecer abierta mientras usás el sitio.
 
 ---
 
-## 📁 Estructura del proyecto
+## 🧪 Modo opcional: ejecución en segundo plano
 
+Si preferís que el contenedor corra sin mantener la terminal abierta:
+
+```bash
+docker run -d -p 8080:8080 ecommerce-istea
+```
+
+Podés detenerlo luego con:
+
+```bash
+docker ps          # para ver el ID del contenedor
+docker stop <container_id>
+```
+
+---
+
+## ✅ Verificación
+
+Una vez ejecutado correctamente, deberías ver algo similar a:
+
+```
+Starting up http-server, serving ./
+Available on:
+  http://127.0.0.1:8080
+```
+
+Y el sitio accesible desde tu navegador con la interfaz del ecommerce mostrando los productos por categoría.
+
+---
+
+## 📂 Estructura del proyecto
+
+```text
+ecommerce-docker/
+├── index.html
+├── style.css / main.js / otros recursos
+├── Dockerfile
+├── .gitignore
+└── README.md
+```
+
+---
+
+## 🔗 Repositorio
+
+Este proyecto está disponible en GitHub:  
+[https://github.com/alenovelli123/ecommerce-docker](https://github.com/alenovelli123/ecommerce-docker)
+
+---
+
+## 👤 Autor
+
+**Alejandro Novelli** – Proyecto académico para ISTEA – 2025
